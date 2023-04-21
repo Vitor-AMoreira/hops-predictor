@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hops Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <h1>Hops Predictor</h1>
+        <p>Fill out the following data fields and get a detailed forecast of your beer's aroma</p>
+    </section>
+    <form action="submit">
+
+        <section id="basic-info">
+            <div class="recipe-name">
+                <label for="recipe-name">Recipe name</label>
+                <input type="text" name="recipe-name" id="recipe-name" placeholder="Recipe name" required>
+            </div>
+            
+            <div class="author">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author" placeholder="Author" required>
+            </div>
+
+        </section>
+
+        <section id="recipe">
+            <div id="beer-info">
+                <h2>Beer information</h2>
+
+                <div class="beer-style">
+                    <label for="beer-style">Beer style</label>
+                    <select name="beer-style" id="beer-style">
+                        <option value="ale">Ale</option>
+                        <option value="lager">Lager</option>
+                        <option value="stout">Stout</option>
+                        <option value="ipa">IPA</option>
+                        <option value="pale-ale">Pale Ale</option>
+                        <option value="porter">Porter</option>
+                        <option value="sour">Sour</option>
+                        <option value="wheat-beer">Wheat Beer</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="hops-info">
+                <h2>Hops information</h2>
+
+                <div class="variety">
+                    <label for="variety">Hops variety</label>
+                    <select name="variety" id="variety">
+                        <option value="cascade">Cascade</option>
+                        <option value="centennial">Centennial</option>
+                        <option value="challenger">Challenger</option>
+                        <option value="chinook">Chinook</option>
+                        <option value="citra">Citra</option>
+                        <option value="cluster">Cluster</option>
+                        <option value="columbus">Columbus</option>
+                        <option value="comet">Comet</option>
+                        <option value="crystal">Crystal</option>
+                        <option value="east-kent-goldings">East Kent Goldings</option>
+                        <option value="fuggle">Fuggle</option>
+                        <option value="galena">Galena</option>
+                        <option value="hallertau">Hallertau</option>
+                        <option value="hallertau-mittelfrueh">Hallertau Mittelfrueh</option>
+                    </select> 
+                </div>
+
+                <div class="format">
+                    <label for="format">Format</label>
+                    <select name="format" id="format">
+                        <option value="pellet">Pellet</option>
+                        <option value="leaf">Leaf</option>
+                        <option value="plug">Plug</option>
+                        <option value="whole">Whole</option>
+                    </select>
+                </div>
+
+                <div class="amount">
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" id="amount" placeholder="Amount" required>
+                </div>
+            </div>
+        </section>
+
+        <section id="submit">
+            <input type="submit" value="Submit">
+        </section>
+
+    </form>
+    
+    <section id="output">
+
+
+    </section>
+
+</body>
+</html>
