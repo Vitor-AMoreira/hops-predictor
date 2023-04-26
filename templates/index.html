@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beer Bitterness Predictor</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#predict-button').click(function() {
+                var hop_var = $('#hop-var').val();
+                var prod_type = $('#prod-type').val();
+                $.ajax({
+                    url: '/predict/' + hop_var + '/' + prod_type,
+                    data: {'hop_var': hop_var, 'prod_type': prod_type},
+                    type: 'POST',
+                    success: function(response) {
+                        var res = JSON.stringify(response);
+                        $('#result').text('Predicted beer bitterness: ' + res);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Beer Bitterness Predictor</h1>
+    <label for="hop-var">Hop variety:</label>
+    <input type="text" id="hop-var" name="hop-var"><br><br>
+    <label for="prod-type">Product type:</label>
+    <input type="text" id="prod-type" name="prod-type"><br><br>
+    <button id="predict-button">Predict bitterness</button><br><br>
+    <div id="result"></div>
+</body>
+</html>
