@@ -1,17 +1,18 @@
 import pandas as pd
 import numpy as np
-from joblib import dump, load
+import pickle
 from flask import Flask, request, jsonify, render_template
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.multioutput import MultiOutputRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LinearRegression
 
 app = Flask(__name__)
 
 
-model = load('beer_model.joblib') 
-
-
-
-
-
+model = pickle.load(open('beer_model.pkl', 'rb'))
 beer_style = pd.read_csv('beer_style.csv')
 
 def locateBeerRecipe(hop_var, prod_type):
