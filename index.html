@@ -6,6 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hops Predictor</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#submit > input').click(function() {
+                var hop_var = $('#variety').val();
+                var prod_type = $('#format').val();
+                $.ajax({
+                    url: '/predict/' + hop_var + '/' + prod_type,
+                    data: {'hop_var': hop_var, 'prod_type': prod_type},
+                    type: 'POST',
+                    success: function(response) {
+                        var res = JSON.stringify(response);
+                        $('#output').text('Predicted beer bitterness: ' + res);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+
 </head>
 <body>
     <section>
@@ -93,7 +115,6 @@
     </form>
     
     <section id="output">
-
 
     </section>
 
