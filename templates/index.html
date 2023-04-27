@@ -17,8 +17,30 @@
                     data: {'hop_var': hop_var, 'prod_type': prod_type},
                     type: 'POST',
                     success: function(response) {
-                        var res = JSON.stringify(response);
-                        $('#output').text('Predicted beer bitterness: ' + res);
+                        if ('No results' in response) {
+                            $('#output1').html('<div class="alert alert-success" role="alert">No data to predict such combination</div><br/>');
+                            return;
+                        }
+
+
+
+                        var min_citrus = JSON.stringify(response.min_predictions[0][0].toFixed(2));
+                        var min_herbal = JSON.stringify(response.min_predictions[0][1].toFixed(2));
+                        var min_hoppy = JSON.stringify(response.min_predictions[0][2].toFixed(2));
+
+                        var average_citrus = JSON.stringify(response.average_predictions[0][0].toFixed(2));
+                        var average_herbal = JSON.stringify(response.average_predictions[0][1].toFixed(2));
+                        var average_hoppy = JSON.stringify(response.average_predictions[0][2].toFixed(2));
+
+                        var max_citrus = JSON.stringify(response.max_predictions[0][0].toFixed(2));
+                        var max_herbal = JSON.stringify(response.max_predictions[0][1].toFixed(2));
+                        var max_hoppy = JSON.stringify(response.max_predictions[0][2].toFixed(2));
+
+                        $('#output1').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + min_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + min_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + min_hoppy + '</strong></div><br/>');
+
+                        $('#output2').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + average_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + average_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + average_hoppy + '</strong></div><br/>');
+
+                        $('#output3').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + max_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + max_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + max_hoppy + '</strong></div><br/>');
                     },
                     error: function(error) {
                         console.log(error);
@@ -179,7 +201,14 @@
         <button id="predict-button" value="Submit">Predict bitterness</button>
     </section>
 </section>
-    <section id="output">
+    <section id="output1">
+        
+
+    </section>
+    <section id="output2">
+
+    </section>
+    <section id="output3">
 
     </section>
 
