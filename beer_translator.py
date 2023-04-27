@@ -24,8 +24,18 @@ row = locateBeerRecipe('Centennial', 'Cryo')
 
 @app.route('/predict/<string:hop_var>/<string:prod_type>', methods=['POST'])
 def beer_predict(hop_var, prod_type):
-    row = locateBeerRecipe(hop_var, prod_type)
+    if (prod_type == "Whole"):
+       prod_type = "T-90/Whole"
+    
+    if (prod_type == 'T-90'):
+       prod_type = "T-90/Whole"
+
+
+
     print(hop_var)
+    print(prod_type)
+    row = locateBeerRecipe(hop_var, prod_type)
+    print(row)
     mini = [str(row.iloc[0]['min-geraniol']), str(row.iloc[0]['min-linalool']), str(row.iloc[0]['min-myrcene']), str(row.iloc[0]['min-trans-β-Farnesene']), str(row.iloc[0]['min-α-humulene']), str(row.iloc[0]['min-β-Caryophylene']), str(row.iloc[0]['min-β-pinene'])]
     mini = [s.replace(',', '.') for s in mini]
     mini = [float(i) for i in mini]
