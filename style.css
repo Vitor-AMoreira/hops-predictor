@@ -106,7 +106,7 @@ form {
     justify-content: center;
 }
 
-#submit > input {
+#submit > button {
     font-family: var(--font-family);
     font-size: 1.2em;
     background: white;
@@ -115,7 +115,7 @@ form {
     margin-top: 2em;
 }
 
-#submit > input:hover {
+#submit > button:hover {
     background: var(--color-primary);
     color: white;
 }
