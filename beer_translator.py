@@ -35,6 +35,13 @@ def beer_predict(hop_var, prod_type):
     print(hop_var)
     print(prod_type)
     row = locateBeerRecipe(hop_var, prod_type)
+
+    if row.empty:
+       return jsonify({
+        'No results': 'No results'
+        })
+
+
     print(row)
     mini = [str(row.iloc[0]['min-geraniol']), str(row.iloc[0]['min-linalool']), str(row.iloc[0]['min-myrcene']), str(row.iloc[0]['min-trans-β-Farnesene']), str(row.iloc[0]['min-α-humulene']), str(row.iloc[0]['min-β-Caryophylene']), str(row.iloc[0]['min-β-pinene'])]
     mini = [s.replace(',', '.') for s in mini]
