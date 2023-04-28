@@ -1,36 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Beer Bitterness Predictor</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hops Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#predict-button').click(function() {
-                var hop_var = $('#hop-var').val();
-                var prod_type = $('#prod-type').val();
-                $.ajax({
-                    url: '/predict/' + hop_var + '/' + prod_type,
-                    data: {'hop_var': hop_var, 'prod_type': prod_type},
-                    type: 'POST',
-                    success: function(response) {
-                        var res = JSON.stringify(response);
-                        $('#result').text('Predicted beer bitterness: ' + res);
-                    },
-                    error: function(error) {
-                        console.log(error);
+            $('#submit').click(function() {
+
+                var hop_var = $('#variety').val();
+                var prod_type = $('#format').val();
+                
+                fetch('/predict/', {
+                    method: 'POST',
+                    body: JSON.stringify({'hop_var': hop_var, 'prod_type': prod_type}),
+                    headers: {
+                        'Content-Type': 'application/json'
                     }
+                })
+                .then(async response => {
+                    var data = await response.json();
+                    $('#output').text(JSON.stringify(data));
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                 });
             });
         });
     </script>
+
 </head>
 <body>
-    <h1>Beer Bitterness Predictor</h1>
-    <label for="hop-var">Hop variety:</label>
-    <input type="text" id="hop-var" name="hop-var"><br><br>
-    <label for="prod-type">Product type:</label>
-    <input type="text" id="prod-type" name="prod-type"><br><br>
-    <button id="predict-button">Predict bitterness</button><br><br>
-    <div id="result"></div>
+    <section>
+        <h1>Hops Predictor</h1>
+        <p>Fill out the following data fields and get a detailed forecast of your beer's aroma</p>
+    </section>
+    <form action="submit">
+
+        <section id="basic-info">
+            <div class="recipe-name">
+                <label for="recipe-name">Recipe name</label>
+                <input type="text" name="recipe-name" id="recipe-name" placeholder="Recipe name" required>
+            </div>
+            
+            <div class="author">
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author" placeholder="Author" required>
+            </div>
+
+        </section>
+
+        <section id="recipe">
+            <div id="beer-info">
+                <h2>Beer information</h2>
+
+                <div class="beer-style">
+                    <label for="beer-style">Beer style</label>
+                    <select name="beer-style" id="beer-style">
+                        <option value="ale">Ale</option>
+                        <option value="lager">Lager</option>
+                        <option value="stout">Stout</option>
+                        <option value="ipa">IPA</option>
+                        <option value="pale-ale">Pale Ale</option>
+                        <option value="porter">Porter</option>
+                        <option value="sour">Sour</option>
+                        <option value="wheat-beer">Wheat Beer</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="hops-info">
+                <h2>Hops information</h2>
+
+                <div class="variety">
+                    <label for="variety">Hops variety</label>
+                    <select name="variety" id="variety">
+                        <option value="Amarillo">Amarillo</option>
+                        <option value="Aurora">Aurora</option>
+                        <option value="Azacca">Azacca</option>
+                        <option value="Bravo">Bravo</option>
+                        <option value="Brewer's Gold">Brewer's Gold</option>
+                        <option value="Cascade">Cascade</option>
+                        <option value="Celeia">Celeia</option>
+                        <option value="Centennial">Centennial</option>
+                        <option value="Challenger">Challenger</option>
+                        <option value="Chinook">Chinook</option>
+                        <option value="Citra">Citra</option>
+                        <option value="Cluster">Cluster</option>
+                        <option value="Columbia">Columbia</option>
+                        <option value="Comet">Comet</option>
+                        <option value="Crystal">Crystal</option>
+                        <option value="CTZ">CTZ</option>
+                        <option value="East Kent Golding">East Kent Golding</option>
+                        <option value="Ekuanot">Ekuanot</option>
+                        <option value="El Dorado">El Dorado</option>
+                        <option value="First Gold">First Gold</option>
+                        <option value="Fuggle">Fuggle</option>
+                        <option value="Galaxy">Galaxy</option>
+                        <option value="Galena">Galena</option>
+                        <option value="Glacier">Glacier</option>
+                        <option value="Hallertau Blanc">Hallertau Blanc</option>
+                        <option value="Hallertau Mittelfrüh">Hallertau Mittelfrüh</option>
+                        <option value="Hallertau Tradition">Hallertau Tradition</option>
+                        <option value="Herkules">Herkules</option>
+                        <option value="Hersbrucker spät">Hersbrucker spät</option>
+                        <option value="Horizon">Horizon</option>
+                        <option value="Hüll Melon">Hüll Melon</option>
+                        <option value="Idaho">Idaho</option>
+                        <option value="Idaho 7">Idaho 7</option>
+                        <option value="Liberty">Liberty</option>
+                        <option value="Magnum">Magnum</option>
+                        <option value="Mandarina Bavaria">Mandarina Bavaria</option>
+                        <option value="Millennium">Millennium</option>
+                        <option value="Mosaic">Mosaic</option>
+                        <option value="Motueka">Motueka</option>
+                        <option value="Mt. Hood">Mt. Hood</option>
+                        <option value="Nelson Sauvin">Nelson Sauvin</option>
+                        <option value="Newport">Newport</option>
+                        <option value="Northern Brewer">Northern Brewer</option>
+                        <option value="Nugget">Nugget</option>
+                        <option value="NZ Pacific Jade">NZ Pacific Jade</option>
+                        <option value="NZ Southern Cross">NZ Southern Cross</option>
+                        <option value="Opal">Opal</option>
+                        <option value="Pacific Gem">Pacific Gem</option>
+                        <option value="Pacifica ™">Pacifica</option>
+                        <option value="Palisade">Palisade</option>
+                    </select> 
+                </div>
+
+                <div class="format">
+                    <label for="format">Format</label>
+                    <select name="format" id="format">
+                        <!-- <option value="pellet">Pellet</option>
+                        <option value="leaf">Leaf</option>
+                        <option value="plug">Plug</option>
+                        <option value="whole">Whole</option> -->
+                        <option value="T-90/Whole">T-90/Whole</option>
+                        <option value="Cryo">Cryo</option>
+                        <option value="American noble">American noble</option>
+                    </select>
+                </div>
+
+                <div class="amount">
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" id="amount" placeholder="Amount" required>
+                </div>
+            </div>
+        </section>
+
+        <section id="submit">
+            <input type="button" value="Submit">
+        </section>
+
+    </form>
+    
+    <section id="output">
+
+    </section>
+
 </body>
 </html>

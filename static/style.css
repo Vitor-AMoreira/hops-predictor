@@ -72,31 +72,22 @@ select {
     border-radius: 5px;
 }
 
-form {
-    margin: 0 25em 2em 25em;
-}
+/* form {
+    margin: 0 25vw 2em 25vw;
+} */
 
-#basic-info {
+/* body {
+    margin: 0 clamp(0.5em, 25vw, 30em);
+} */
+
+#basic-info, #recipe {
+    width: clamp(537px, 80%, 800px);
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
 
-#basic-info > div {
-    display: flex;
-    flex-direction: column;
-}
-
-#recipe {
-    display: flex;
-    justify-content: space-between;
-}
-
-#beer-info > div {
-    display: flex;
-    flex-direction: column;
-}
-
-#hops-info > div {
+#basic-info > div, #beer-info > div, #hops-info > div {
     display: flex;
     flex-direction: column;
 }
@@ -118,4 +109,14 @@ form {
 #submit > input:hover {
     background: var(--color-primary);
     color: white;
+}
+
+/* Process css based on the web width */
+@media screen and (max-width: 570px) {
+
+
+    #basic-info, #recipe {
+        flex-direction: column;
+        align-items: center;
+    }
 }

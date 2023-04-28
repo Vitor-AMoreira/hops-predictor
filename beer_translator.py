@@ -22,8 +22,12 @@ def locateBeerRecipe(hop_var, prod_type):
 row = locateBeerRecipe('Centennial', 'Cryo')
 
 
-@app.route('/predict/<string:hop_var>/<string:prod_type>', methods=['POST'])
-def beer_predict(hop_var, prod_type):
+
+@app.route('/predict/', methods=['POST'])
+def predict():
+    hop_var = request.get_json().get('hop_var')
+    prod_type = request.get_json().get('prod_type')
+
     row = locateBeerRecipe(hop_var, prod_type)
     print(row)
     mini = [str(row.iloc[0]['min-geraniol']), str(row.iloc[0]['min-linalool']), str(row.iloc[0]['min-myrcene']), str(row.iloc[0]['min-trans-β-Farnesene']), str(row.iloc[0]['min-α-humulene']), str(row.iloc[0]['min-β-Caryophylene']), str(row.iloc[0]['min-β-pinene'])]
@@ -49,5 +53,5 @@ def index():
  return render_template('/index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5501)
 
