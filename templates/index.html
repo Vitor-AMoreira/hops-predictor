@@ -49,8 +49,6 @@
                     $('#output2').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + average_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + average_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + average_hoppy + '</strong></div><br/>');
 
                     $('#output3').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + max_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + max_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + max_hoppy + '</strong></div><br/>');
-
-                    $('#output').text(JSON.stringify(data));
                 })
                 .catch(error => {
                     console.error('Error:', error);
