@@ -56,7 +56,8 @@ def predict():
     mini = [str(row.iloc[0]['min-geraniol']), str(row.iloc[0]['min-linalool']), str(row.iloc[0]['min-myrcene']), str(row.iloc[0]['min-trans-β-Farnesene']), str(row.iloc[0]['min-α-humulene']), str(row.iloc[0]['min-β-Caryophylene']), str(row.iloc[0]['min-β-pinene'])]
     mini = [s.replace(',', '.') for s in mini]
     mini = [float(i) for i in mini]
-    mini = [min_total_oil * i for i in mini]
+    mini = [min_total_oil * i * 10 for i in mini]
+    print("MINI: ", mini)
     predict_min = model.predict([mini])
 
 
@@ -68,7 +69,8 @@ def predict():
     maxi = [str(row.iloc[0]['max-geraniol']), str(row.iloc[0]['max-linalool']), str(row.iloc[0]['max-myrcene']), str(row.iloc[0]['max-trans-β-Farnesene']), str(row.iloc[0]['max-α-humulene']), str(row.iloc[0]['max-β-Caryophylene']), str(row.iloc[0]['max-β-pinene'])]
     maxi = [s.replace(',', '.') for s in maxi]
     maxi = [float(i) for i in maxi]
-    maxi = [max_total_oil * i for i in maxi]
+    maxi = [max_total_oil * i * 10 for i in maxi]
+    print("MAXI: ", maxi)
     predict_max = model.predict([maxi])
 
 
@@ -80,11 +82,10 @@ def predict():
     average = [str(row.iloc[0]['average-geraniol']), str(row.iloc[0]['average-linalool']), str(row.iloc[0]['average-myrcene']), str(row.iloc[0]['average-trans-β-Farnesene']), str(row.iloc[0]['average-α-humulene']), str(row.iloc[0]['average-β-Caryophylene']), str(row.iloc[0]['average-β-pinene'])]
     average = [s.replace(',', '.') for s in average]
     average = [float(i) for i in average]
-    average = [average_total_oil * i for i in average]
+    average = [average_total_oil * i * 10 for i in average]
+    print("AVERAGE: ", average)
     predict_average = model.predict([average])
 
-    print ('Average: ', average_total_oil)
-    print ('Max: ', max_total_oil)
 
     return jsonify({
         'min_predictions': predict_min.tolist(),
@@ -98,4 +99,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5503)
-
