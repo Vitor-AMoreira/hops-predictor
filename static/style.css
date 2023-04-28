@@ -72,13 +72,6 @@ select {
     border-radius: 5px;
 }
 
-/* form {
-    margin: 0 25vw 2em 25vw;
-} */
-
-/* body {
-    margin: 0 clamp(0.5em, 25vw, 30em);
-} */
 
 #basic-info, #recipe {
     width: clamp(537px, 80%, 800px);
@@ -104,6 +97,7 @@ select {
     cursor: pointer;
     padding: 0.3em 2em;
     margin-top: 2em;
+    border: 2px solid var(--color-primary);
 }
 
 #submit > input:hover {

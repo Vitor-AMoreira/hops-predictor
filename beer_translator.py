@@ -28,7 +28,20 @@ def predict():
     hop_var = request.get_json().get('hop_var')
     prod_type = request.get_json().get('prod_type')
 
+    if (prod_type == "Whole"):
+       prod_type = "T-90/Whole"
+    
+    if (prod_type == 'T-90'):
+       prod_type = "T-90/Whole"
+
     row = locateBeerRecipe(hop_var, prod_type)
+
+    if row.empty:
+       return jsonify({
+        'No results': 'No results'
+        })
+
+
     print(row)
     mini = [str(row.iloc[0]['min-geraniol']), str(row.iloc[0]['min-linalool']), str(row.iloc[0]['min-myrcene']), str(row.iloc[0]['min-trans-β-Farnesene']), str(row.iloc[0]['min-α-humulene']), str(row.iloc[0]['min-β-Caryophylene']), str(row.iloc[0]['min-β-pinene'])]
     mini = [s.replace(',', '.') for s in mini]
@@ -50,8 +63,8 @@ def predict():
 
 @app.route('/')
 def index():
- return render_template('/index.html')
+ return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5501)
+    app.run(debug=True, port=5503)
 

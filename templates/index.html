@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#submit').click(function() {
+            $('#submit > input').click(function() {
 
                 var hop_var = $('#variety').val();
                 var prod_type = $('#format').val();
@@ -22,7 +22,34 @@
                     }
                 })
                 .then(async response => {
-                    var data = await response.json();
+
+                    response = await response.json();
+
+                    if ('No results' in response) {
+                        $('#output1').html('<div class="alert alert-success" role="alert">No data to predict such combination</div><br/>');
+                        $('#output2').html('');
+                        $('#output3').html('');
+                        return;
+                    }
+
+                    var min_citrus = JSON.stringify(response.min_predictions[0][0].toFixed(2));
+                    var min_herbal = JSON.stringify(response.min_predictions[0][1].toFixed(2));
+                    var min_hoppy = JSON.stringify(response.min_predictions[0][2].toFixed(2));
+
+                    var average_citrus = JSON.stringify(response.average_predictions[0][0].toFixed(2));
+                    var average_herbal = JSON.stringify(response.average_predictions[0][1].toFixed(2));
+                    var average_hoppy = JSON.stringify(response.average_predictions[0][2].toFixed(2));
+
+                    var max_citrus = JSON.stringify(response.max_predictions[0][0].toFixed(2));
+                    var max_herbal = JSON.stringify(response.max_predictions[0][1].toFixed(2));
+                    var max_hoppy = JSON.stringify(response.max_predictions[0][2].toFixed(2));
+
+                    $('#output1').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + min_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + min_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + min_hoppy + '</strong></div><br/>');
+
+                    $('#output2').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + average_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + average_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + average_hoppy + '</strong></div><br/>');
+
+                    $('#output3').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + max_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + max_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + max_hoppy + '</strong></div><br/>');
+
                     $('#output').text(JSON.stringify(data));
                 })
                 .catch(error => {
@@ -134,18 +161,15 @@
                 <div class="format">
                     <label for="format">Format</label>
                     <select name="format" id="format">
-                        <!-- <option value="pellet">Pellet</option>
-                        <option value="leaf">Leaf</option>
-                        <option value="plug">Plug</option>
-                        <option value="whole">Whole</option> -->
-                        <option value="T-90/Whole">T-90/Whole</option>
-                        <option value="Cryo">Cryo</option>
+                        <option value="Whole">Whole</option>
                         <option value="American noble">American noble</option>
+                        <option value="Cryo">Cryo</option>
+                        <option value="T-90">T-90</option>
                     </select>
                 </div>
 
                 <div class="amount">
-                    <label for="amount">Amount</label>
+                    <label for="amount">Amount (g)</label>
                     <input type="number" name="amount" id="amount" placeholder="Amount" required>
                 </div>
             </div>
@@ -158,7 +182,17 @@
     </form>
     
     <section id="output">
+        <section id="output1">
+    
+        </section>
 
+        <section id="output2">
+
+        </section>
+
+        <section id="output3">
+
+        </section>
     </section>
 
 </body>
