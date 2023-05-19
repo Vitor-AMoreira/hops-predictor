@@ -8,97 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#submit > input').click(function() {
-
-                var hop_var = $('#variety').val();
-                var prod_type = $('#format').val();
-                var amount = $('#amount').val();
-                
-                fetch('/predict/', {
-                    method: 'POST',
-                    body: JSON.stringify({'hop_var': hop_var, 'prod_type': prod_type, 'amount': amount}),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(async response => {
-
-                    response = await response.json();
-
-                    if ('No results' in response) {
-                        $('#output1').html('<div class="alert alert-success" role="alert">No data to predict such combination</div><br/>');
-                        $('#output2').html('');
-                        $('#output3').html('');
-                        return;
-                    }
-
-                    var min_citrus = parseFloat(response.min_predictions[0][0].toFixed(2));
-                    var min_herbal = parseFloat(response.min_predictions[0][1].toFixed(2));
-                    var min_hoppy = parseFloat(response.min_predictions[0][2].toFixed(2));
-
-                    var average_citrus = parseFloat(response.average_predictions[0][0].toFixed(2));
-                    var average_herbal = parseFloat(response.average_predictions[0][1].toFixed(2));
-                    var average_hoppy = parseFloat(response.average_predictions[0][2].toFixed(2));
-
-                    var max_citrus = parseFloat(response.max_predictions[0][0].toFixed(2));
-                    var max_herbal = parseFloat(response.max_predictions[0][1].toFixed(2));
-                    var max_hoppy = parseFloat(response.max_predictions[0][2].toFixed(2));
-
-                    $('#output1').html('<div class="alert alert-success" role="alert">Minimum Citrus: <strong>' + min_citrus + '</strong><br/>Minimum Herbal (herbaceous): <strong>' + min_herbal + '</strong><br/>Minimum overall hoppy intensity: <strong>' + min_hoppy + '</strong></div><br/>');
-
-                    $('#output2').html('<div class="alert alert-success" role="alert">Average Citrus: <strong>' + average_citrus + '</strong><br/>Average Herbal (herbaceous): <strong>' + average_herbal + '</strong><br/>Average overall hoppy intensity: <strong>' + average_hoppy + '</strong></div><br/>');
-
-                    $('#output3').html('<div class="alert alert-success" role="alert">Maximum Citrus: <strong>' + max_citrus + '</strong><br/>Maximum Herbal (herbaceous): <strong>' + max_herbal + '</strong><br/>Maximum overall hoppy intensity: <strong>' + max_hoppy + '</strong></div><br/>');
-
-                    // Create the chart
-                    //console.log(min_citrus);
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var chart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['Citrus', 'Herbal', 'Hoppy'],
-                            datasets: [
-                                {
-                                    label: 'Minimum',
-                                    data: [parseFloat(min_citrus), parseFloat(min_herbal), parseFloat(min_hoppy)],
-                                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                                    borderColor: 'rgba(75, 192, 192, 1)',
-                                    borderWidth: 1
-                                },
-                                {
-                                    label: 'Average',
-                                    data: [average_citrus, average_herbal, average_hoppy],
-                                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                                    borderColor: 'rgba(54, 162, 235, 1)',
-                                    borderWidth: 1
-                                },
-                                {
-                                    label: 'Maximum',
-                                    data: [max_citrus, max_herbal, max_hoppy],
-                                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                    borderColor: 'rgba(255, 99, 132, 1)',
-                                    borderWidth: 1
-                                }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            });
-        });
-    </script>
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 
 </head>
 <body>
@@ -222,9 +132,33 @@
 
     </form>
     
-    <section id="output">
-        <canvas id="myChart"></canvas>
-        <section id="output1">
+    <section id="output" style="display:none;">
+        
+        <div id="output-header">
+            <span class="output-line"></span>
+            <h2>Output</h2>
+        </div>
+        
+        <div id="output-charts">
+            <div id="overall">
+                <h3>Overall</h3>
+                <div class="chart_div"></div>
+            </div>
+    
+            <div id="herbal">
+                <h3>Herbal</h3>
+                <div class="chart_div"></div>
+            </div>
+    
+            <div id="citrus">
+                <h3>Citrus</h3>
+                <div class="chart_div"></div>
+            </div>
+        </div>
+        
+
+        <!-- <canvas id="myChart"></canvas> -->
+        <!-- <section id="output1">
     
         </section>
 
@@ -234,7 +168,7 @@
 
         <section id="output3">
 
-        </section>
+        </section> -->
     </section>
 
 </body>
