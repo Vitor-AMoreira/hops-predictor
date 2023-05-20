@@ -32,6 +32,15 @@ Like in almost all artificial intelligence models, data scarcity was one of the 
 
 ## Model Trainning
 
+![Model Trainning Diagram](img/Model-sample.png)
+
+The training data is extracted from a database. These data were collected in specialized laboratories. Due to the scarcity of data and the difficulty in finding them, our training model uses the fields 'citrus', 'herbal (herbaceous)', and 'overall hoppy intensity' as input parameters from the dataset and generates predictions for the fields 'geraniol (cis)', 'linalool', 'myrcene', 'trans-β-farnesene', 'α-humulene', 'β-caryophyllene', and 'β-pinene' in the dataframe. For the training of the model, we use 80% of the data for training and 20% for testing to ensure the quality of the training.
+
+The training for this data was performed using Linear Regression, which is the ideal technique for modeling dependent variables with one or more independent variables. By using Linear Regression, we aim to minimize the difference between the predicted and actual values. The functionalities used in our Python program were from the Sklearn library (Scikit-learn), which provides various machine learning algorithms and tools for data analysis and modeling. For more informations about Linear regression and the Python function used: [Linear Regression](https://www.analyticsvidhya.com/blog/2021/10/everything-you-need-to-know-about-linear-regression/) and 
+[Sklearn: MultiOutputRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.multioutput.MultiOutputRegressor.html)
+
+
+
 ## Examples
 
 ## Dependencies

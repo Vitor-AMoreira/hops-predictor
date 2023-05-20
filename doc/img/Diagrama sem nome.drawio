@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" modified="2023-05-19T17:21:39.928Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="fpyLdxa4ofdtD75JN8xb" version="21.3.2" type="device">
+  <diagram name="Página-1" id="ZUyHBSsA5EcyfFupJD6F">
+    <mxGraphModel dx="408" dy="567" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fqFeUSHs859MUeU28DGZ-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.855;exitY=0.855;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.016;entryY=0.084;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fqFeUSHs859MUeU28DGZ-1" target="fqFeUSHs859MUeU28DGZ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-1" value="Citrus" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fqFeUSHs859MUeU28DGZ-2" target="fqFeUSHs859MUeU28DGZ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-2" value="Herbal" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.855;exitY=0.145;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.9;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fqFeUSHs859MUeU28DGZ-3" target="fqFeUSHs859MUeU28DGZ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-3" value="Overall Hoppy" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="fqFeUSHs859MUeU28DGZ-4" target="fqFeUSHs859MUeU28DGZ-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-4" value="MODEL" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240" y="200" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-8" value="geraniol (cis)&lt;br&gt;linalool&lt;br&gt;myrcene&lt;br&gt;trans-β-farnesene&lt;br&gt;α-humulene&lt;br&gt;β-caryophyllene&lt;br&gt;β-pinene" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="390" y="140" width="210" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-10" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;Resources to predict&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="100" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fqFeUSHs859MUeU28DGZ-11" value="&lt;b style=&quot;font-size: 16px;&quot;&gt;Predicted values&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="420" y="100" width="150" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
