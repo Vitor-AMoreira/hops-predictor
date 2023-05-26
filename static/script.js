@@ -5,6 +5,12 @@ document.querySelector("#submit > input").addEventListener('click', function() {
     var hop_var = $('#variety').val();
     var prod_type = $('#format').val();
     var amount = $('#amount').val();
+
+    if(amount == '' || amount > 50) {
+        alert('Please enter a valid amount');
+        location.reload();
+        return;
+    }
     
     fetch('/predict/', {
         method: 'POST',
@@ -61,13 +67,14 @@ function generate_chart(min_predictions, average_predictions, max_predictions) {
         }
         max = parseFloat(max_predictions[0][i]).toFixed(2)
         min = parseFloat(min_predictions[0][i]).toFixed(2)
-        average = parseFloat(average_predictions[0][i]).toFixed(2)
 
-	if(min > max) {
+        if(min > max) {
             var temp = min;
             min = max;
             max = temp;
         }
+
+        average = parseFloat(max + min / 2).toFixed(2)
 
         display_chart(chart, max, min, average)
     }
