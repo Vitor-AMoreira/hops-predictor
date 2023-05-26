@@ -63,7 +63,7 @@ function generate_chart(min_predictions, average_predictions, max_predictions) {
         min = parseFloat(min_predictions[0][i]).toFixed(2)
         average = parseFloat(average_predictions[0][i]).toFixed(2)
 
-        if(min > max) {
+	if(min > max) {
             var temp = min;
             min = max;
             max = temp;

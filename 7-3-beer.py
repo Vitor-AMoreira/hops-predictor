@@ -53,4 +53,3 @@ print(predictions)
 print(y_test)
 
 pickle.dump(model, open('beer_model.pkl', 'wb'))
-
