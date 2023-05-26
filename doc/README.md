@@ -46,8 +46,6 @@ The training for this data was performed using Linear Regression, which is the i
 ## Dependencies
 1. pandas
 2. numpy
-3. pickle
-4. flask
-5. sklearn
 
-To be continued
+
+
