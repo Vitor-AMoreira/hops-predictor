@@ -53,6 +53,7 @@ document.querySelector("#submit > input").addEventListener('click', function() {
     .catch(error => {
         console.error('Error:', error);
     });
+    window.scrollTo(0, document.body.scrollHeight);
 });
 
 function generate_chart(min_predictions, average_predictions, max_predictions) {
@@ -73,8 +74,8 @@ function generate_chart(min_predictions, average_predictions, max_predictions) {
             min = max;
             max = temp;
         }
-
-        average = parseFloat(max + min / 2).toFixed(2)
+        //get the average between max and min
+        average = ((parseFloat(max) + parseFloat(min)) / 2).toFixed(2)
 
         display_chart(chart, max, min, average)
     }
