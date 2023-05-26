@@ -105,6 +105,97 @@ select {
     color: white;
 }
 
+#output {
+    margin: 0 auto 5em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.output-line {
+    display: block;
+    width: 90vw;
+    height: 2px;
+    background-color: var(--color-primary);
+    margin: 0.5em 0 0.5em 0;
+}
+
+#output-charts {
+    width: 90%;
+    height: 10em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#output-charts h3 {
+    margin-right: 1.5em;
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+#output-charts > div {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#output-charts p {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+#output-charts .chart_div {
+    height: 4em;
+    width: 50%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#output-charts .avg-line {
+    height: 2em;
+    width: 3px;
+    background-color: var(--text-color);
+}
+
+#output-charts .chart {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2em;
+}
+
+#overall .chart {
+    background-color: #2b4bdb;
+}
+
+#herbal .chart {
+    background-color: #54f872;
+}
+
+#citrus .chart {
+    background-color: #fd5f7c;
+}
+
+
+#output-charts .values, #output-charts .labels {
+    width: 90%;
+    margin: 5px 0 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+
 /* Process css based on the web width */
 @media screen and (max-width: 570px) {
 
